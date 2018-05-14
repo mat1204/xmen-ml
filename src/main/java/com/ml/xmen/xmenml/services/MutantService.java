@@ -1,8 +1,6 @@
 package com.ml.xmen.xmenml.services;
 
-import org.springframework.stereotype.Service;
+public interface MutantService {
 
-@Service
-public class MutantService {
-
+    Boolean isMutant(String[] cadenaADN);
 }
