@@ -9,6 +9,7 @@ public class ParametrosADN {
 
     private Integer coincidenciasMinimasEnSecuencia = 4;
     private Integer secuenciasParaGenMutante = 2;
+    private String secuenciaPermitida = "";
 
 
     public Integer getCoincidenciasMinimasEnSecuencia() {
@@ -25,6 +26,14 @@ public class ParametrosADN {
 
     public void setSecuenciasParaGenMutante(Integer secuenciasParaGenMutante) {
         this.secuenciasParaGenMutante = secuenciasParaGenMutante;
+    }
+
+    public String getSecuenciaPermitida() {
+        return secuenciaPermitida;
+    }
+
+    public void setSecuenciaPermitida(String secuenciaPermitida) {
+        this.secuenciaPermitida = secuenciaPermitida;
     }
 
 }
