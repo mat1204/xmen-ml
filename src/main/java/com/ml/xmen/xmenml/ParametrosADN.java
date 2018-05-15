@@ -9,7 +9,7 @@ public class ParametrosADN {
 
     private Integer coincidenciasMinimasEnSecuencia = 4;
     private Integer secuenciasParaGenMutante = 2;
-    private String secuenciaPermitida = "";
+    private String secuenciaPermitida; // utilizado en regex por defecto
 
 
     public Integer getCoincidenciasMinimasEnSecuencia() {
@@ -34,6 +34,15 @@ public class ParametrosADN {
 
     public void setSecuenciaPermitida(String secuenciaPermitida) {
         this.secuenciaPermitida = secuenciaPermitida;
+    }
+
+    public String getRegexSecuenciaPermitida() {
+        String secuencia = ".";
+
+        if (this.secuenciaPermitida != null)
+            secuencia = "[" + this.secuenciaPermitida.toUpperCase() + "]";
+
+        return "^" + secuencia + "*$";
     }
 
 }
