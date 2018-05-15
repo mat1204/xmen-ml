@@ -38,7 +38,7 @@ dependencies {
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
-	runtime("org.slf4j:slf4j-simple:1.7.25")
+	//runtime("org.slf4j:slf4j-simple:1.7.25")
 //	testCompile('com.h2database:h2')
 //	testCompile('junit:junit:4.12')
 }
