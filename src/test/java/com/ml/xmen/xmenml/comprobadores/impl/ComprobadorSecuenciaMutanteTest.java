@@ -1,5 +1,6 @@
-package com.ml.xmen.xmenml.domain;
+package com.ml.xmen.xmenml.comprobadores.impl;
 
+import com.ml.xmen.xmenml.comprobadores.impl.ComprobadorSecuenciaMutante;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,7 +8,7 @@ public class ComprobadorSecuenciaMutanteTest {
 
     @Test
     public void secuenciaSimpleTest() {
-        ComprobadorSecuenciaMutante comp = new ComprobadorSecuenciaMutante();
+        ComprobadorSecuenciaMutante comp = new ComprobadorSecuenciaMutante(4, 2);
 
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTCCA", 2));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTCCA", 3));
@@ -17,7 +18,7 @@ public class ComprobadorSecuenciaMutanteTest {
 
     @Test
     public void secuenciasIncorrectasTest() {
-        ComprobadorSecuenciaMutante comp = new ComprobadorSecuenciaMutante();
+        ComprobadorSecuenciaMutante comp = new ComprobadorSecuenciaMutante(4, 2);
 
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTCCA", 4));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCA", 7));

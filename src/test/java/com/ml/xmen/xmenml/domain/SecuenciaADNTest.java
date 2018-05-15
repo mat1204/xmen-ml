@@ -49,6 +49,29 @@ public class SecuenciaADNTest {
 
 
 
+    @Test
+    public void obtenerDiagonalNumericaTest() {
+        SecuenciaADN secuenciaADN = new SecuenciaADN(Arrays.array(
+                                                        "AAABG",
+                                                                "BBAWT",
+                                                                "SSDWG",
+                                                                "GGTTT",
+                                                                "AWEAG"));
+
+        Assert.assertEquals("A", secuenciaADN.obtenerCadenaDiagonal(0));
+        Assert.assertEquals("GW", secuenciaADN.obtenerCadenaDiagonal(1));
+        Assert.assertEquals("SGE", secuenciaADN.obtenerCadenaDiagonal(2));
+        Assert.assertEquals("BSTA", secuenciaADN.obtenerCadenaDiagonal(3));
+        Assert.assertEquals("ABDTG", secuenciaADN.obtenerCadenaDiagonal(4));
+        Assert.assertEquals("AAWT", secuenciaADN.obtenerCadenaDiagonal(5));
+        Assert.assertEquals("AWG", secuenciaADN.obtenerCadenaDiagonal(6));
+        Assert.assertEquals("BT", secuenciaADN.obtenerCadenaDiagonal(7));
+        Assert.assertEquals("G", secuenciaADN.obtenerCadenaDiagonal(8));
+
+    }
+
+
+
 
     @Test(expected = ErrorIndiceCadenaException.class)
     public void numeroFilafueraDeRangoTest() {
