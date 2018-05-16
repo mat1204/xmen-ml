@@ -55,6 +55,27 @@ public class MatrizCadenaADNTest {
 
     }
 
+    @Test
+    public void obtenerDiagonalInvertidaNumericaTest() {
+        MatrizCadenaADN matrizADN = new MatrizCadenaADN(Arrays.array(
+                                                        "AAABG",
+                                                                "BBAWT",
+                                                                "SSDWG",
+                                                                "GGTTT",
+                                                                "AWEAG"));
+
+        Assert.assertEquals("A", matrizADN.obtenerCadenaDiagonalInvertida(0));
+        Assert.assertEquals("BA", matrizADN.obtenerCadenaDiagonalInvertida(1));
+        Assert.assertEquals("SBA", matrizADN.obtenerCadenaDiagonalInvertida(2));
+        Assert.assertEquals("GSAB", matrizADN.obtenerCadenaDiagonalInvertida(3));
+        Assert.assertEquals("AGDWG", matrizADN.obtenerCadenaDiagonalInvertida(4));
+        Assert.assertEquals("WTWT", matrizADN.obtenerCadenaDiagonalInvertida(5));
+        Assert.assertEquals("ETG", matrizADN.obtenerCadenaDiagonalInvertida(6));
+        Assert.assertEquals("AT", matrizADN.obtenerCadenaDiagonalInvertida(7));
+        Assert.assertEquals("G", matrizADN.obtenerCadenaDiagonalInvertida(8));
+
+    }
+
 
 
 

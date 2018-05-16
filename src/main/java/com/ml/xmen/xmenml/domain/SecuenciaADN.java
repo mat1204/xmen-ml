@@ -22,6 +22,7 @@ public class SecuenciaADN {
         Integer secuenciasCoincidentes = 0;
 
         int tamanio = this.matrizADN.numeroDeCadenas();
+        this.esMutante = false;
 
         for (int i = 0; !esMutante && i < tamanio ; i++) {
             if (comprobadorADN.contieneSecuenciaMutante(this.matrizADN.obtenerCadenaFila(i)))
@@ -33,14 +34,18 @@ public class SecuenciaADN {
                 esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
         }
 
-        int cantDiagonales = 2 * tamanio - 2;
+        int cantDiagonales = this.matrizADN.numeroDeDiagonales();
 
         for (int k = 0; !esMutante && k < cantDiagonales ; k++) {
             String cadenaDiagonal = this.matrizADN.obtenerCadenaDiagonal(k);
+
+            if (comprobadorADN.contieneSecuenciaMutante(cadenaDiagonal))
+                esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
+
+            cadenaDiagonal = this.matrizADN.obtenerCadenaDiagonalInvertida(k);
             if (comprobadorADN.contieneSecuenciaMutante(cadenaDiagonal))
                 esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
         }
-
 
         return this.esMutante;
     }

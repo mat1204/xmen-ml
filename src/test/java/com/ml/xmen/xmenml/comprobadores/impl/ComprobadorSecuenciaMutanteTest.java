@@ -13,6 +13,7 @@ public class ComprobadorSecuenciaMutanteTest {
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTCCA", 2));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTCCA", 3));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTGGGGGCCA", 5));
+        Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTAAAAAAAGGGGGCCA", 6));
 
     }
 
@@ -24,6 +25,7 @@ public class ComprobadorSecuenciaMutanteTest {
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCA", 7));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAAAADDDCCGGG", 7));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAAAADDDCCGGG", 7));
+        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTAAAAAGGGGGCCA", 6));
     }
 
 }

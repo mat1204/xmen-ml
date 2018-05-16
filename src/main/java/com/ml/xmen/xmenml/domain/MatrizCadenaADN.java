@@ -58,6 +58,29 @@ public class MatrizCadenaADN {
         return sb.toString();
     }
 
+    public String obtenerCadenaDiagonalInvertida(Integer numeroDiagonal) {
+
+        int tamanio = this.adn.length;
+        StringBuffer sb = new StringBuffer();
+
+        int i = tamanio - 1, j = 0;
+
+        if (numeroDiagonal < tamanio-1) {
+            i = numeroDiagonal;
+            j = 0;
+        }
+        else if (numeroDiagonal > tamanio-1) {
+            j = numeroDiagonal - (tamanio-1);
+        }
+
+
+        for ( ; 0 <= i && i < tamanio && 0 <= j &&  j < tamanio; i--, j++) {
+            sb.append(this.adn[i].charAt(j));
+        }
+
+        return sb.toString();
+    }
+
     /*
     public String obtenerCadenaDiagonal(DiagonalSecuenciaADN diagonalSecuenciaADN) {
 
@@ -86,4 +109,7 @@ public class MatrizCadenaADN {
         return this.adn.length;
     }
 
+    public Integer numeroDeDiagonales() {
+        return this.adn.length * 2 - 1;
+    }
 }
