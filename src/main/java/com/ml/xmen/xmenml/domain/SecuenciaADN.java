@@ -1,26 +1,50 @@
 package com.ml.xmen.xmenml.domain;
 
 import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
+import com.ml.xmen.xmenml.exceptions.SecuenciaADNNoAnalizadaException;
 
 public class SecuenciaADN {
 
     private MatrizCadenaADN matrizADN;
     private Boolean esMutante;
+    private Boolean secuenciaAnalizada = false;
 
     public SecuenciaADN(String[] secuenciasAdn) {
         this.matrizADN = new MatrizCadenaADN(secuenciasAdn);
     }
 
 
+    /**
+     * Indica si la Secuencia de ADN posee el gen mutante, debe comprobarse previamente, caso contrario
+     * arrojara SecuenciaADNNoAnalizadaException.
+     * @return
+     */
     public Boolean esMutante() {
+
+        if (!secuenciaAnalizada)
+            throw new SecuenciaADNNoAnalizadaException();
+
         return this.esMutante;
     }
 
+    public Boolean secuenciaAnalizada() {
+        return this.secuenciaAnalizada;
+    }
+
+    /**
+     * Serializa la informacion que poseen todas las cadenas de ADN, en un unico String.
+     * @return
+     */
     public String serializarADN() {
         return this.matrizADN.serializarCadena();
     }
 
 
+    /**
+     * Indica si la Secuencia de ADN posee un el Gen Mutante a partir de un comprobador de cadenas de ADN.
+     * @param comprobadorADN
+     * @return
+     */
     public Boolean contieneAdnMutante(ComprobadorADN comprobadorADN) {
 
         Integer secuenciasCoincidentes = 0;
@@ -50,6 +74,8 @@ public class SecuenciaADN {
             if (comprobadorADN.contieneSecuenciaMutante(cadenaDiagonal))
                 esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
         }
+
+        this.secuenciaAnalizada = true;
 
         return this.esMutante;
     }

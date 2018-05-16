@@ -1,6 +1,7 @@
 package com.ml.xmen.xmenml.domain;
 
 import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
+import com.ml.xmen.xmenml.exceptions.SecuenciaADNNoAnalizadaException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +26,23 @@ public class SecuenciaADNTest {
             }
         };
     }
+    @Test
+    public void secuenciaAnalizadaTest() {
+        String[] adn = {"AAAAAA",
+                "AABBCC",
+                "AAAAAA",
+                "AAABBB",
+                "AAAAAA",
+                "AABBCC"};
+
+        ComprobadorADN comprobadorADN = this.mockComprobadorAdn();
+        SecuenciaADN secuenciaADN = new SecuenciaADN(adn);
+
+        secuenciaADN.contieneAdnMutante(comprobadorADN);
+
+        Assert.assertTrue(secuenciaADN.secuenciaAnalizada());
+    }
+
 
     @Test
     public void secuenciaMutanteSimpleTest() {
@@ -98,6 +116,7 @@ public class SecuenciaADNTest {
 
         Boolean poseeAdnMutante = secuenciaADN.contieneAdnMutante(comprobadorADN);
 
+        Assert.assertTrue(secuenciaADN.secuenciaAnalizada());
         Assert.assertTrue(poseeAdnMutante);
     }
 
@@ -121,6 +140,7 @@ public class SecuenciaADNTest {
 
         Boolean poseeAdnMutante = secuenciaADN.contieneAdnMutante(comprobadorADN);
 
+        Assert.assertTrue(secuenciaADN.secuenciaAnalizada());
         Assert.assertTrue(poseeAdnMutante);
     }
     @Test
@@ -143,6 +163,7 @@ public class SecuenciaADNTest {
 
         Boolean poseeAdnMutante = secuenciaADN.contieneAdnMutante(comprobadorADN);
 
+        Assert.assertTrue(secuenciaADN.secuenciaAnalizada());
         Assert.assertTrue(poseeAdnMutante);
     }
 
@@ -158,7 +179,21 @@ public class SecuenciaADNTest {
 
         Boolean poseeAdnMutante = secuenciaADN.contieneAdnMutante(comprobadorADN);
 
+        Assert.assertTrue(secuenciaADN.secuenciaAnalizada());
         Assert.assertFalse(poseeAdnMutante);
     }
 
+
+    @Test(expected = SecuenciaADNNoAnalizadaException.class)
+    public void secuenciaNoAnalizadaTest() {
+        String[] adn = {"AAA",
+                "AAA",
+                "AAA"};
+
+        SecuenciaADN secuenciaADN = new SecuenciaADN(adn);
+
+        Assert.assertFalse(secuenciaADN.secuenciaAnalizada());
+
+        Boolean esMutante = secuenciaADN.esMutante();
+    }
 }
