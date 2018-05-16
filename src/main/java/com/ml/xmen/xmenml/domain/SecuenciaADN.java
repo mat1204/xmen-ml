@@ -16,6 +16,10 @@ public class SecuenciaADN {
         return this.esMutante;
     }
 
+    public String serializarADN() {
+        return this.matrizADN.serializarCadena();
+    }
+
 
     public Boolean contieneAdnMutante(ComprobadorADN comprobadorADN) {
 

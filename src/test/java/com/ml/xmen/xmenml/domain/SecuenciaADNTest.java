@@ -161,5 +161,4 @@ public class SecuenciaADNTest {
         Assert.assertFalse(poseeAdnMutante);
     }
 
-
 }

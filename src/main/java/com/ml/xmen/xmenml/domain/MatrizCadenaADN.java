@@ -81,6 +81,25 @@ public class MatrizCadenaADN {
         return sb.toString();
     }
 
+    public String serializarCadena() {
+        StringBuffer sb = new StringBuffer();
+
+        sb.append("[");
+
+        for (String cadena : this.adn) {
+            sb.append("'");
+            sb.append(cadena);
+            sb.append("',");
+        }
+
+        // le saco la ultima coma ','
+        sb.setLength(sb.length()-1);
+
+        sb.append("]");
+
+        return sb.toString();
+    }
+
     /*
     public String obtenerCadenaDiagonal(DiagonalSecuenciaADN diagonalSecuenciaADN) {
 

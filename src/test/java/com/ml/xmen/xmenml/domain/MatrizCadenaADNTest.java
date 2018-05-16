@@ -94,4 +94,11 @@ public class MatrizCadenaADNTest {
         matrizADN.obtenerCadenaColumna(8);
     }
 
+
+    @Test
+    public void serializarCadenasTest() {
+        MatrizCadenaADN matrizADN = new MatrizCadenaADN(Arrays.array("AAAB", "BBAW", "SSDW", "AWEA"));
+        Assert.assertEquals("['AAAB','BBAW','SSDW','AWEA']", matrizADN.serializarCadena());
+    }
+
 }
