@@ -35,12 +35,12 @@ public class ComprobacionMutanteValidator implements Validator {
 
         for (String cadena : request.getDna()) {
             if (cadena.length() != tamanio) {
-                errors.reject("adn.errorLongitudCadena");
+                errors.reject("adn.errorLongitudCadena", "Longitud de cadena no corresponde con Matriz de ADN");
                 break;
             }
 
             if (!this.secuenciaValida(cadena)) {
-                errors.reject("adn.secuenciaInvalida");
+                errors.reject("adn.secuenciaInvalida", "Secuencia de caracteres invalidos en cadena de ADN");
                 break;
             }
         }
