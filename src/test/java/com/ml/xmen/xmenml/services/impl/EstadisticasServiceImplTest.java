@@ -1,6 +1,7 @@
 package com.ml.xmen.xmenml.services.impl;
 
 import com.ml.xmen.xmenml.domain.SecuenciaADN;
+import com.ml.xmen.xmenml.dto.EstadisticasGlobalDTO;
 import com.ml.xmen.xmenml.entity.Estadistica;
 import com.ml.xmen.xmenml.entity.TipoEstadistica;
 import com.ml.xmen.xmenml.repository.EstadisticaRepository;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -87,4 +90,28 @@ public class EstadisticasServiceImplTest {
 
     }
 
+
+    @Test
+    public void obtenerEstadissticasMutanteTest() {
+
+        SecuenciaADN secuenciaADN = new SecuenciaADNMock(Arrays.array("AAT", "BBA", "AAB"), true);
+
+        estadisticasService.actualizarEstadisticas(secuenciaADN);
+
+        EstadisticasGlobalDTO estadisticasGlobalDTO = estadisticasService.obtenerEstadisticasGlobales();
+
+        Assert.assertEquals( Long.valueOf(1), estadisticasGlobalDTO.getCantidadHumanos());
+        Assert.assertEquals( Long.valueOf(1), estadisticasGlobalDTO.getCantidadMutantes());
+        Assert.assertEquals( new BigDecimal("1.0").doubleValue(), estadisticasGlobalDTO.getRatioMutante().doubleValue(), 0.001d);
+    }
+
+
+    @Test
+    public void estadisticasVaciasTest(){
+        EstadisticasGlobalDTO estadisticasGlobalDTO = estadisticasService.obtenerEstadisticasGlobales();
+
+        Assert.assertEquals( Long.valueOf(0), estadisticasGlobalDTO.getCantidadHumanos());
+        Assert.assertEquals( Long.valueOf(0), estadisticasGlobalDTO.getCantidadMutantes());
+        Assert.assertEquals( BigDecimal.ZERO, estadisticasGlobalDTO.getRatioMutante());
+    }
 }

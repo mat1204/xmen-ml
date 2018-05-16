@@ -56,6 +56,10 @@ public class MatrizCadenaADN {
      * @return
      */
     public String obtenerCadenaDiagonal(Integer numeroDiagonal) {
+
+        if ( numeroDiagonal < 0 || numeroDiagonal >= this.numeroDeDiagonales())
+            throw new ErrorIndiceCadenaException();
+
         int i = 0, j = 0;
 
         int tamanio = this.adn.length;

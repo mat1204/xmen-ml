@@ -101,4 +101,16 @@ public class MatrizCadenaADNTest {
         Assert.assertEquals("['AAAB','BBAW','SSDW','AWEA']", matrizADN.serializarCadena());
     }
 
+    @Test(expected = ErrorIndiceCadenaException.class)
+    public void errorDeNumeroDeDiagonalMayorTest() {
+        MatrizCadenaADN matrizADN = new MatrizCadenaADN(Arrays.array("AAAB", "BBAW", "SSDW", "AWEA"));
+        String diagonal = matrizADN.obtenerCadenaDiagonal(20);
+    }
+
+    @Test(expected = ErrorIndiceCadenaException.class)
+    public void errorDeNumeroDeDiagonalMenorTest() {
+        MatrizCadenaADN matrizADN = new MatrizCadenaADN(Arrays.array("AAAB", "BBAW", "SSDW", "AWEA"));
+        String diagonal = matrizADN.obtenerCadenaDiagonal(-5);
+    }
+
 }

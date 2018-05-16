@@ -6,7 +6,4 @@ public class SecuenciaADNNoAnalizadaException extends RuntimeException {
         super();
     }
 
-    public SecuenciaADNNoAnalizadaException(String error) {
-        super(error);
-    }
 }
