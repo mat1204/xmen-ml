@@ -196,4 +196,18 @@ public class SecuenciaADNTest {
 
         Boolean esMutante = secuenciaADN.esMutante();
     }
+
+    @Test
+    public void serializacionTest() {
+        String[] adn = {"AAA",
+                "BBB",
+                "CCC"};
+
+        ComprobadorADN comprobadorADN = this.mockComprobadorAdn();
+        SecuenciaADN secuenciaADN = new SecuenciaADN(adn);
+
+        Boolean poseeAdnMutante = secuenciaADN.contieneAdnMutante(comprobadorADN);
+
+        Assert.assertEquals("['AAA','BBB','CCC']", secuenciaADN.serializarADN());
+    }
 }

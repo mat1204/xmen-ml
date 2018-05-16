@@ -36,8 +36,10 @@ public class ComprobacionMutanteValidator implements Validator {
             return;
         }
 
-
         int tamanio = request.getDna().length;
+
+        if (tamanio == 0)
+            errors.reject("adn.cadenaVacia");
 
         for (String cadena : request.getDna()) {
             if (cadena.equals("")) {

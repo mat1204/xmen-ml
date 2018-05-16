@@ -48,11 +48,6 @@ public class ComprobadorSecuenciaMutanteRegex implements ComprobadorADN {
     }
 
 
-    ComprobadorSecuenciaMutanteRegex(Integer coincidenciasMinimas, Integer secuenciasNecesarias ) {
-        this.coincidenciasRequeridasEnSecuencia = coincidenciasMinimas;
-        this.secuenciasRequeridasParaGenMutante = secuenciasNecesarias;
-        this.patternMutante = Pattern.compile(".*");
-    }
 
     @Override
     public Boolean contieneSecuenciaMutante(String cadenaAdn) {
