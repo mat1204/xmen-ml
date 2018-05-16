@@ -31,17 +31,29 @@ public class ComprobacionMutanteValidator implements Validator {
     public void validate(Object target, Errors errors) {
         ComprobacionMutanteRequest request = (ComprobacionMutanteRequest) target;
 
+        if (request.getDna() == null) {
+            errors.reject("adn.null", "No se encontraron cadenas de ADN para analizar");
+            return;
+        }
+
+
         int tamanio = request.getDna().length;
 
         for (String cadena : request.getDna()) {
+            if (cadena.equals("")) {
+                errors.reject("adn.cadenaNull", "Al menos una cadena ADN esta vacia");
+                return;
+            }
+
+
             if (cadena.length() != tamanio) {
                 errors.reject("adn.errorLongitudCadena", "Longitud de cadena no corresponde con Matriz de ADN");
-                break;
+                return;
             }
 
             if (!this.secuenciaValida(cadena)) {
                 errors.reject("adn.secuenciaInvalida", "Secuencia de caracteres invalidos en cadena de ADN");
-                break;
+                return;
             }
         }
     }

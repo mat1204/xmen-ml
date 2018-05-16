@@ -4,7 +4,6 @@ import javax.validation.constraints.NotNull;
 
 public class ComprobacionMutanteRequest {
 
-    @NotNull
     private String[] dna;
 
     public String[] getDna() {
