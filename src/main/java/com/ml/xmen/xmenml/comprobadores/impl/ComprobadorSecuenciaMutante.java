@@ -1,6 +1,6 @@
 package com.ml.xmen.xmenml.comprobadores.impl;
 
-import com.ml.xmen.xmenml.ParametrosADN;
+import com.ml.xmen.xmenml.config.ParametrosADN;
 import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

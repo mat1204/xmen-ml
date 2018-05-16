@@ -1,4 +1,4 @@
-package com.ml.xmen.xmenml;
+package com.ml.xmen.xmenml.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

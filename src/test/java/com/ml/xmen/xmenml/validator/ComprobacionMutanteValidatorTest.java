@@ -1,6 +1,6 @@
 package com.ml.xmen.xmenml.validator;
 
-import com.ml.xmen.xmenml.ParametrosADN;
+import com.ml.xmen.xmenml.config.ParametrosADN;
 import com.ml.xmen.xmenml.controllers.requestbody.ComprobacionMutanteRequest;
 import com.ml.xmen.xmenml.validators.ComprobacionMutanteValidator;
 import org.assertj.core.util.Arrays;
@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.MapBindingResult;
 
 import java.util.regex.Pattern;
 

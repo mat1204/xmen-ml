@@ -1,13 +1,12 @@
 package com.ml.xmen.xmenml.validators;
 
-import com.ml.xmen.xmenml.ParametrosADN;
+import com.ml.xmen.xmenml.config.ParametrosADN;
 import com.ml.xmen.xmenml.controllers.requestbody.ComprobacionMutanteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import sun.security.krb5.internal.PAData;
 
 import java.util.regex.Pattern;
 
