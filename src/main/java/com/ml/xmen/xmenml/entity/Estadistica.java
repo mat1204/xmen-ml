@@ -11,7 +11,7 @@ public class Estadistica {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private TipoEstadistica tipoEstadistica;
 
     private Long valor;
