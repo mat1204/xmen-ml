@@ -12,7 +12,7 @@ public class SecuenciaADN {
     }
 
 
-    public Boolean getEsMutante() {
+    public Boolean esMutante() {
         return this.esMutante;
     }
 

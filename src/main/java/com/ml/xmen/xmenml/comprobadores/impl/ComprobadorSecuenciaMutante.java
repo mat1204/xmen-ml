@@ -5,7 +5,7 @@ import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ComprobadorSecuenciaMutante implements ComprobadorADN {
 
     final private Integer coincidenciasRequeridasEnSecuencia;

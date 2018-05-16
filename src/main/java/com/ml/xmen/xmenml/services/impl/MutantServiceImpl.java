@@ -4,7 +4,10 @@ import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
 import com.ml.xmen.xmenml.domain.SecuenciaADN;
 import com.ml.xmen.xmenml.entity.RegistroADN;
 import com.ml.xmen.xmenml.repository.RegistroADNRepository;
+import com.ml.xmen.xmenml.services.EstadisticasService;
 import com.ml.xmen.xmenml.services.MutantService;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,11 @@ public class MutantServiceImpl implements MutantService {
     @Autowired
     RegistroADNRepository registroADNRepository;
 
+    @Autowired
+    EstadisticasService estadisticasService;
+
+    private Logger logger = LogManager.getLogger(MutantService.class);
+
     @Override
     @Transactional
     public Boolean isMutant(String[] adn) {
@@ -29,17 +37,28 @@ public class MutantServiceImpl implements MutantService {
 
         this.persistirSecuenciaAdn(secuenciaADN);
 
+        this.estadisticasService.actualizarEstadisticas(secuenciaADN);
+
         return esMutante;
     }
 
 
     private void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
-        RegistroADN registroADN = new RegistroADN();
+        try {
+            RegistroADN registroADN = new RegistroADN();
 
-        registroADN.setSecuenciasADN(secuenciaADN.serializarADN());
-        registroADN.setEsMutante(secuenciaADN.getEsMutante());
+            //logger.info("persistiendo secuencia:" + secuenciaADN.serializarADN());
 
-        this.registroADNRepository.save(registroADN);
+            registroADN.setSecuenciasADN(secuenciaADN.serializarADN());
+            registroADN.setEsMutante(secuenciaADN.esMutante());
+
+            this.registroADNRepository.save(registroADN);
+        }
+        catch (Exception e) {
+            logger.error("Error persistiend Secuencia: " + secuenciaADN.serializarADN());
+            logger.error(e);
+        }
+
     }
 
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
-//@Component
+@Component
 public class ComprobadorSecuenciaMutanteRegex implements ComprobadorADN {
 
     final private Integer coincidenciasRequeridasEnSecuencia;

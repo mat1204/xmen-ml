@@ -40,7 +40,7 @@ public class SecuenciaADNTest {
 
         secuenciaADN.contieneAdnMutante(comprobadorADN);
 
-        Assert.assertTrue(secuenciaADN.getEsMutante());
+        Assert.assertTrue(secuenciaADN.esMutante());
     }
 
 

@@ -17,6 +17,7 @@ public class ComprobadorSecuenciaMutanteRegexTest {
         ComprobadorSecuenciaMutanteRegex comp = new ComprobadorSecuenciaMutanteRegex(parametrosADN);
 
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTBBA"));
+        Assert.assertTrue(comp.contieneSecuenciaMutante("ATBATBATBATBAAATBTBTB"));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATBTBBBA"));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTBBABBCCA"));
         Assert.assertTrue(comp.contieneSecuenciaMutante("AATTTAAAAAAABBBBAABA"));
@@ -34,6 +35,7 @@ public class ComprobadorSecuenciaMutanteRegexTest {
         ComprobadorSecuenciaMutanteRegex comp = new ComprobadorSecuenciaMutanteRegex(parametrosADN);
 
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTCCA"));
+        Assert.assertFalse(comp.contieneSecuenciaMutante("ATBATBATBATBATBATBATBATB"));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCA"));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAATADDDCCGGG"));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGBBBGGBBGGBBGCCTAAADDDCCGGG"));
