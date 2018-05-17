@@ -139,4 +139,25 @@ public class MutantServiceImplTest {
         Assert.assertFalse(registroADN.getEsMutante());
     }
 
+    private String[] genererarCadenas(String cadena) {
+        String[] result = new String[cadena.length()];
+
+        for (int i = 0 ; i < cadena.length() ; i++)
+            result[i] = cadena;
+
+        return result;
+    }
+
+    @Test
+    public void cadenaMuyLargaNoPersistidaTest() {
+        String[] adn = genererarCadenas("ACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCAACCCA");
+
+        Boolean esMutante = mutantService.isMutant(adn);
+
+        Integer tamanioMatriz = adn.length * adn.length;
+
+        Assert.assertTrue(tamanioMatriz > 2048);
+
+        Assert.assertEquals(0l, registroADNRepository.count());
+    }
 }

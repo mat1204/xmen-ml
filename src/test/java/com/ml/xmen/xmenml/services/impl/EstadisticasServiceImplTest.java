@@ -63,7 +63,7 @@ public class EstadisticasServiceImplTest {
         Assert.assertEquals(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS, estadisticaHumanos.getTipoEstadistica());
         Assert.assertNull(estadisticaMutantes);
 
-
+        Assert.assertNotNull(estadisticaHumanos.getId());
         Assert.assertEquals( 1, estadisticaRepository.count());
         Assert.assertEquals( Long.valueOf(1), estadisticaHumanos.getValor());
 
@@ -113,5 +113,40 @@ public class EstadisticasServiceImplTest {
         Assert.assertEquals( Long.valueOf(0), estadisticasGlobalDTO.getCantidadHumanos());
         Assert.assertEquals( Long.valueOf(0), estadisticasGlobalDTO.getCantidadMutantes());
         Assert.assertEquals( BigDecimal.ZERO, estadisticasGlobalDTO.getRatioMutante());
+    }
+
+    @Test
+    public void actualizacionEstaisticaConTipoNoUnicoErrorTest() {
+
+        SecuenciaADN secuenciaADN = new SecuenciaADNMock(Arrays.array("AAT", "BBA", "AAB"), false);
+
+        estadisticasService.actualizarEstadisticas(secuenciaADN);
+
+        Estadistica estadisticaHumanos = estadisticaRepository.findByTipoEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS);
+        Estadistica estadisticaMutantes = estadisticaRepository.findByTipoEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS);
+
+        estadisticaHumanos.setTipoEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS);
+        estadisticaHumanos.setValor(29l);
+
+        estadisticaRepository.save(estadisticaHumanos);
+
+    }
+
+    @Test
+    public void inicializacionDeEstadisticaTest() {
+
+
+        Estadistica estadistica = new Estadistica();
+
+        estadistica.setTipoEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS);
+        estadistica.contar();
+
+        estadisticaRepository.save(estadistica);
+
+        Estadistica estRecuperada = estadisticaRepository.findAll().iterator().next();
+
+        Assert.assertEquals(Long.valueOf(1l), estRecuperada.getValor());
+        Assert.assertEquals(estadistica.getTipoEstadistica(), estRecuperada.getTipoEstadistica());
+
     }
 }

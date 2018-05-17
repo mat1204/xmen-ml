@@ -49,7 +49,7 @@ public class Estadistica {
 
     public void contar() {
         if (this.valor == null)
-            this.valor = 1l;
+            this.valor = 0l;
         this.valor++;
     }
 }
