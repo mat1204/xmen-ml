@@ -88,11 +88,12 @@ public class ComprobadorSecuenciaMutanteRegexTest {
         ComprobadorSecuenciaMutanteRegex comp = new ComprobadorSecuenciaMutanteRegex(obtenerParametrosMock());
 
         Assert.assertEquals(Integer.valueOf(3), comp.contarSecuenciasMutante("AAAATTTTCCAAAAA"));
-//        Assert.assertFalse(comp.contieneSecuenciaMutante("ATBATBATBATBATBATBATBATB"));
-//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCA"));
-//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAATADDDCCGGG"));
-//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGBBBGGBBGGBBGCCTAAADDDCCGGG"));
-//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTAABBAATTAGGGGGCCA"));
+        Assert.assertEquals(Integer.valueOf(4), comp.contarSecuenciasMutante("AAAATAAAATAAAATBBBBBBBBBBBBBBBBBBBBBBBBB"));
+        Assert.assertEquals(Integer.valueOf(1), comp.contarSecuenciasMutante("AAAAAAAAAAAAAAA"));
+        Assert.assertEquals(Integer.valueOf(2), comp.contarSecuenciasMutante("AAAATTTTBBAA"));
+        Assert.assertEquals(Integer.valueOf(0), comp.contarSecuenciasMutante("AATTBBAATTTAAATAAATAAA"));
+        Assert.assertEquals(Integer.valueOf(1), comp.contarSecuenciasMutante("AATTBBAAAATTTAAATAAATAAA"));
+
     }
 
 }

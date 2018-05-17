@@ -64,4 +64,24 @@ public class ComprobadorSecuenciaMutanteTest {
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTAAAAAGGGGGCCA", 6));
     }
 
+    @Test
+    public void secuenciasConMultiplesCoincidenciasTest() {
+
+        ParametrosADN parametrosADN = new ParametrosADN();
+
+        parametrosADN.setSecuenciaPermitida("ATB");
+        parametrosADN.setCoincidenciasMinimasEnSecuencia(4);
+        parametrosADN.setSecuenciasParaGenMutante(3);
+
+        ComprobadorSecuenciaMutante comp = new ComprobadorSecuenciaMutante(parametrosADN);
+
+        Assert.assertEquals(Integer.valueOf(3), comp.contarSecuenciasMutante("AAAATTTTCCAAAAA"));
+        Assert.assertEquals(Integer.valueOf(4), comp.contarSecuenciasMutante("AAAATAAAATAAAATBBBBBBBBBBBBBBBBBBBBBBBBB"));
+        Assert.assertEquals(Integer.valueOf(1), comp.contarSecuenciasMutante("AAAAAAAAAAAAAAA"));
+        Assert.assertEquals(Integer.valueOf(2), comp.contarSecuenciasMutante("AAAATTTTBBAA"));
+        Assert.assertEquals(Integer.valueOf(0), comp.contarSecuenciasMutante("AATTBBAATTTAAATAAATAAA"));
+        Assert.assertEquals(Integer.valueOf(1), comp.contarSecuenciasMutante("AATTBBAAAATTTAAATAAATAAA"));
+
+    }
+
 }

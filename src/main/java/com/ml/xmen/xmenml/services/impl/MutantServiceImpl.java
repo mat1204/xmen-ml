@@ -49,7 +49,7 @@ public class MutantServiceImpl implements MutantService {
 
     private void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
 
-        if (!this.parametrosADN.getPersitirRegistros())
+        if (!this.parametrosADN.getPersistirRegistros())
             return;
 
         try {

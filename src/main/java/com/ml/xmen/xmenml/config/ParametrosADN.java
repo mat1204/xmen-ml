@@ -10,7 +10,7 @@ public class ParametrosADN {
     private Integer coincidenciasMinimasEnSecuencia = 4;
     private Integer secuenciasParaGenMutante = 2;
     private String secuenciaPermitida; // utilizado en regex por defecto
-    private Boolean persitirRegistros = true;
+    private Boolean persistirRegistros = true;
 
 
     public Integer getCoincidenciasMinimasEnSecuencia() {
@@ -46,11 +46,11 @@ public class ParametrosADN {
         return "^" + secuencia + "*$";
     }
 
-    public Boolean getPersitirRegistros() {
-        return persitirRegistros;
+    public Boolean getPersistirRegistros() {
+        return persistirRegistros;
     }
 
-    public void setPersitirRegistros(Boolean persitirRegistros) {
-        this.persitirRegistros = persitirRegistros;
+    public void setPersistirRegistros(Boolean persistirRegistros) {
+        this.persistirRegistros = persistirRegistros;
     }
 }

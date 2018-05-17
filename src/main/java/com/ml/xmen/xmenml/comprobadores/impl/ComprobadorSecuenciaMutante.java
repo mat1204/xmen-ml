@@ -24,13 +24,17 @@ public class ComprobadorSecuenciaMutante implements ComprobadorADN {
     }
 
     @Override
-    public Boolean contieneSecuenciaMutante(String candenaAdn) {
-        return this.esADNComprobable(candenaAdn) && this.contieneSecuenciaMutante(candenaAdn, this.coincidenciasRequeridasEnSecuencia);
+    public Boolean contieneSecuenciaMutante(String cadenaAdn) {
+        return this.esADNComprobable(cadenaAdn) && this.contarSecuenciasMutante(cadenaAdn) > 0;
+    }
+
+    public Boolean contieneSecuenciaMutante(String cadenaAdn, Integer coincidenciasMinimas ) {
+        return this.esADNComprobable(cadenaAdn) && this.contarSecuenciasMutante(cadenaAdn, coincidenciasMinimas) > 0;
     }
 
     @Override
     public Integer contarSecuenciasMutante(String cadenaAdn) {
-        return 0;
+        return this.contarSecuenciasMutante(cadenaAdn, this.coincidenciasRequeridasEnSecuencia);
     }
 
     @Override
@@ -43,15 +47,19 @@ public class ComprobadorSecuenciaMutante implements ComprobadorADN {
         return numeroSecuenciasCoincidencias >= this.secuenciasRequeridasParaGenMutante;
     }
 
-    public Boolean contieneSecuenciaMutante(String cadenaAdn, Integer coincidenciasRequeridas) {
-
+    public Integer contarSecuenciasMutante(String cadenaAdn, Integer minimos) {
         Boolean esSecuenciaMutante = false;
+
+        Integer coincidencias = 0;
 
         Integer coincidenciaLocal = 0;
         Character caracterCoincidencia = cadenaAdn.charAt(0);
 
+        Boolean coincidenciaLocalEncontrada = false;
+
         for (int i = 0 ; !esSecuenciaMutante && i < cadenaAdn.length(); i++) {
             Character caracter = cadenaAdn.charAt(i);
+
 
             if (caracter.equals(caracterCoincidencia)) {
                 coincidenciaLocal++;
@@ -59,13 +67,17 @@ public class ComprobadorSecuenciaMutante implements ComprobadorADN {
             else {
                 coincidenciaLocal = 1;
                 caracterCoincidencia = caracter;
+                coincidenciaLocalEncontrada = false;
             }
 
 
-            if (coincidenciaLocal >= coincidenciasRequeridas)
-                esSecuenciaMutante = true;
+            if (!coincidenciaLocalEncontrada && coincidenciaLocal >= minimos) {
+                coincidencias++;
+                coincidenciaLocalEncontrada = true;
+            }
         }
 
-        return esSecuenciaMutante;
+        return coincidencias;
     }
+
 }
