@@ -52,27 +52,29 @@ public class SecuenciaADN {
         int tamanio = this.matrizADN.numeroDeCadenas();
         this.esMutante = false;
 
+        Integer coincidencias = 0;
+
         for (int i = 0; !esMutante && i < tamanio ; i++) {
-            if (comprobadorADN.contieneSecuenciaMutante(this.matrizADN.obtenerCadenaFila(i)))
-                esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
+
+            secuenciasCoincidentes += comprobadorADN.contarSecuenciasMutante(this.matrizADN.obtenerCadenaFila(i));
+            esMutante = comprobadorADN.poseeGenMutante(secuenciasCoincidentes);
+
         }
 
         for (int j = 0; !esMutante && j < tamanio ; j++) {
-            if (comprobadorADN.contieneSecuenciaMutante(this.matrizADN.obtenerCadenaColumna(j)))
-                esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
+            secuenciasCoincidentes += comprobadorADN.contarSecuenciasMutante(this.matrizADN.obtenerCadenaColumna(j));
+            esMutante = comprobadorADN.poseeGenMutante(secuenciasCoincidentes);
         }
 
         int cantDiagonales = this.matrizADN.numeroDeDiagonales();
 
         for (int k = 0; !esMutante && k < cantDiagonales ; k++) {
-            String cadenaDiagonal = this.matrizADN.obtenerCadenaDiagonal(k);
 
-            if (comprobadorADN.contieneSecuenciaMutante(cadenaDiagonal))
-                esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
+            secuenciasCoincidentes += comprobadorADN.contarSecuenciasMutante(this.matrizADN.obtenerCadenaDiagonal(k));
+            secuenciasCoincidentes += comprobadorADN.contarSecuenciasMutante(this.matrizADN.obtenerCadenaDiagonalInvertida(k));
 
-            cadenaDiagonal = this.matrizADN.obtenerCadenaDiagonalInvertida(k);
-            if (comprobadorADN.contieneSecuenciaMutante(cadenaDiagonal))
-                esMutante = comprobadorADN.poseeGenMutante(++secuenciasCoincidentes);
+            esMutante = comprobadorADN.poseeGenMutante(secuenciasCoincidentes);
+
         }
 
         this.secuenciaAnalizada = true;

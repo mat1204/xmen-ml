@@ -1,6 +1,7 @@
 package com.ml.xmen.xmenml.services.impl;
 
 import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
+import com.ml.xmen.xmenml.config.ParametrosADN;
 import com.ml.xmen.xmenml.domain.SecuenciaADN;
 import com.ml.xmen.xmenml.entity.RegistroADN;
 import com.ml.xmen.xmenml.repository.RegistroADNRepository;
@@ -18,6 +19,9 @@ public class MutantServiceImpl implements MutantService {
 
     @Autowired
     ComprobadorADN comprobadorADN;
+
+    @Autowired
+    ParametrosADN parametrosADN;
 
     @Autowired
     RegistroADNRepository registroADNRepository;
@@ -44,6 +48,10 @@ public class MutantServiceImpl implements MutantService {
 
 
     private void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
+
+        if (!this.parametrosADN.getPersitirRegistros())
+            return;
+
         try {
             RegistroADN registroADN = new RegistroADN();
 

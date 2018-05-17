@@ -16,6 +16,11 @@ public class SecuenciaADNTest {
             }
 
             @Override
+            public Integer contarSecuenciasMutante(String cadenaADN) {
+                return cadenaADN.contains("AAA") ? 1 : 0;
+            }
+
+            @Override
             public Boolean poseeGenMutante(Integer numeroCoincidencias) {
                 return numeroCoincidencias >= 3;
             }
@@ -64,11 +69,11 @@ public class SecuenciaADNTest {
 
     @Test
     public void secuenciaNoMutanteSimpleTest() {
-        String[] adn = {"AAAAAA",
+        String[] adn = {"AABAAB",
                         "AABBCC",
                         "CCBBCC",
-                        "AACBBC",
-                        "AABBBC",
+                        "ABCBBC",
+                        "BABBBC",
                         "AABBCC"};
 
         ComprobadorADN comprobadorADN = this.mockComprobadorAdn();
@@ -96,20 +101,24 @@ public class SecuenciaADNTest {
         Assert.assertTrue(poseeAdnMutante);
     }
 
+
+
     @Test
-    public void secuenciaMutanteConMultiplesDiagonalesTest() {
-        String[] adn = {"ACCCCCCCCCCC",
-                        "CACCCACCCCCC",
-                        "CCACCCACCCCC",
-                        "CCCACCCACCCC",
-                        "CCCCACCCACCC",
-                        "CCCCCACCCACC",
-                        "CCACCCACCCAC",
-                        "CCCACCCACCCC",
-                        "CCCCACCCCCCC",
-                        "CCCCCACCCCCC",
-                        "CCCCCCACCCCC",
-                        "CCCCCCCACCCC"};
+    public void secuenciaMutanteMultiplesEnMismaDiagonalTest() {
+        String[] adn = {
+                "ACCCCCCCCCCC",
+                "CACCCACCCCCC",
+                "CCACCCACCCCC",
+                "CCCACCCACCCC",
+                "CCCCACCCACCC",
+                "CCCCCACCCACC",
+                "CCACCCACCCAC",
+                "CCCACCCACCCC",
+                "CCCCACCCCCCC",
+                "CCCCCACCCCCC",
+                "CCCCCCACCCCC",
+                "CCCCCCCACCCC"
+        };
 
         ComprobadorADN comprobadorADN = this.mockComprobadorAdn();
         SecuenciaADN secuenciaADN = new SecuenciaADN(adn);

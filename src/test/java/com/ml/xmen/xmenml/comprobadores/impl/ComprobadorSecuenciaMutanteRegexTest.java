@@ -6,6 +6,16 @@ import org.junit.Test;
 
 public class ComprobadorSecuenciaMutanteRegexTest {
 
+    private ParametrosADN obtenerParametrosMock() {
+        ParametrosADN parametrosADN = new ParametrosADN();
+
+        parametrosADN.setSecuenciaPermitida("ATB");
+        parametrosADN.setCoincidenciasMinimasEnSecuencia(4);
+        parametrosADN.setSecuenciasParaGenMutante(2);
+
+        return parametrosADN;
+    }
+
     @Test
     public void verificarSecuenciaMutanteTest() {
         ParametrosADN parametrosADN = new ParametrosADN();
@@ -60,11 +70,7 @@ public class ComprobadorSecuenciaMutanteRegexTest {
 
     @Test
     public void secuenciasIncorrectasTest() {
-        ParametrosADN parametrosADN = new ParametrosADN();
-
-        parametrosADN.setSecuenciaPermitida("ATB");
-        parametrosADN.setCoincidenciasMinimasEnSecuencia(4);
-        parametrosADN.setSecuenciasParaGenMutante(2);
+        ParametrosADN parametrosADN = obtenerParametrosMock();
 
         ComprobadorSecuenciaMutanteRegex comp = new ComprobadorSecuenciaMutanteRegex(parametrosADN);
 
@@ -74,6 +80,19 @@ public class ComprobadorSecuenciaMutanteRegexTest {
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAATADDDCCGGG"));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGBBBGGBBGGBBGCCTAAADDDCCGGG"));
         Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTAABBAATTAGGGGGCCA"));
+    }
+
+    @Test
+    public void secuenciasConMultiplesCoincidenciasTest() {
+
+        ComprobadorSecuenciaMutanteRegex comp = new ComprobadorSecuenciaMutanteRegex(obtenerParametrosMock());
+
+        Assert.assertEquals(Integer.valueOf(3), comp.contarSecuenciasMutante("AAAATTTTCCAAAAA"));
+//        Assert.assertFalse(comp.contieneSecuenciaMutante("ATBATBATBATBATBATBATBATB"));
+//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCA"));
+//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGGGGCCAATADDDCCGGG"));
+//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTGGBBBGGBBGGBBGCCTAAADDDCCGGG"));
+//        Assert.assertFalse(comp.contieneSecuenciaMutante("AATTTAABBAATTAGGGGGCCA"));
     }
 
 }

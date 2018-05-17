@@ -13,6 +13,13 @@ public interface ComprobadorADN {
     public Boolean contieneSecuenciaMutante(String cadenaADN);
 
     /**
+     * Indica si la Cadena posee una coincidencia con patron de Gen Mutante
+     * @param cadenaADN cadena de ADN a analizar
+     * @return
+     */
+    public Integer contarSecuenciasMutante(String cadenaADN);
+
+    /**
      * Indica si se posee el Gen Mutante a partir de un numero de coincidencias de Gen Mutante
      * @param numeroCoincidencias coincidencias de gen mutante a utilizar
      * @return

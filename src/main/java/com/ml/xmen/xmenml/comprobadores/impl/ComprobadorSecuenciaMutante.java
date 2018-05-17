@@ -29,6 +29,11 @@ public class ComprobadorSecuenciaMutante implements ComprobadorADN {
     }
 
     @Override
+    public Integer contarSecuenciasMutante(String cadenaAdn) {
+        return 0;
+    }
+
+    @Override
     public Boolean esADNComprobable(String cadenaADN){
         return cadenaADN.length() >= this.coincidenciasRequeridasEnSecuencia.intValue();
     }

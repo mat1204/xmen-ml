@@ -5,6 +5,7 @@ import com.ml.xmen.xmenml.config.ParametrosADN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
@@ -26,7 +27,7 @@ public class ComprobadorSecuenciaMutanteRegex implements ComprobadorADN {
 
         StringBuffer sb = new StringBuffer();
 
-        sb.append("^.*");
+        sb.append("");
         sb.append("(");
 
         for (Character caracter : secuenciaPermitida.toUpperCase().toCharArray() ) {
@@ -42,7 +43,6 @@ public class ComprobadorSecuenciaMutanteRegex implements ComprobadorADN {
         sb.setLength(sb.length() - 1);
 
         sb.append(")");
-        sb.append(".*$");
 
         return sb.toString();
     }
@@ -51,7 +51,18 @@ public class ComprobadorSecuenciaMutanteRegex implements ComprobadorADN {
 
     @Override
     public Boolean contieneSecuenciaMutante(String cadenaAdn) {
-        return this.patternMutante.matcher(cadenaAdn).matches();
+        return this.patternMutante.matcher(cadenaAdn).find();
+    }
+
+    @Override
+    public Integer contarSecuenciasMutante(String cadenaADN) {
+        Matcher matcher = this.patternMutante.matcher(cadenaADN);
+        Integer count = 0;
+
+        while (matcher.find()) count++;
+
+        return count;
+
     }
 
     @Override
