@@ -56,7 +56,7 @@ public class MutantControllerTest {
     @Test
     public void requestAdnNoMutanteTest() throws Exception {
 
-        String jsonRequest ="{ \"dna\": [ \"AC\", \"BA\" ] }";
+        String jsonRequest ="{ \"dna\": [ \"AT\", \"BA\" ] }";
 
         this.mockMvc
                 .perform(post("/mutant").content(jsonRequest).contentType("application/json"))

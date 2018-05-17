@@ -179,9 +179,9 @@ public class SecuenciaADNTest {
 
     @Test
     public void secuenciaCortaNoMutanteSimpleTest() {
-        String[] adn = {"AAA",
-                        "AAA",
-                        "AAA"};
+        String[] adn = {"ABA",
+                        "BAB",
+                        "ABA"};
 
         ComprobadorADN comprobadorADN = this.mockComprobadorAdn();
         SecuenciaADN secuenciaADN = new SecuenciaADN(adn);
