@@ -9,6 +9,7 @@ import com.ml.xmen.xmenml.repository.RegistroADNRepository;
 import com.ml.xmen.xmenml.services.EstadisticasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
@@ -20,12 +21,30 @@ public class EstadisticasServiceImpl implements EstadisticasService {
     @Autowired
     private EstadisticaRepository estadisticaRepository;
 
+    @Autowired
+    private RegistroADNRepository registroADNRepository;
+
+//    @Override
+//    public EstadisticasGlobalDTO obtenerEstadisticasGlobales() {
+//
+//        Long cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS).getValor();
+//        Long cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS).getValor();
+//
+//        BigDecimal ratio = BigDecimal.ZERO;
+//
+//        if (cantHumanos > 0)
+//            ratio = BigDecimal.valueOf(cantMutantes)
+//                    .divide(BigDecimal.valueOf(cantHumanos), 3, RoundingMode.HALF_UP);
+//
+//        return new EstadisticasGlobalDTO(cantHumanos, cantMutantes, ratio);
+//    }
+
     @Override
     @Transactional
     public EstadisticasGlobalDTO obtenerEstadisticasGlobales() {
 
-        Long cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS).getValor();
-        Long cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS).getValor();
+        Long cantHumanos = registroADNRepository.count();
+        Long cantMutantes = registroADNRepository.cantidadDeMutantes();
 
         BigDecimal ratio = BigDecimal.ZERO;
 
@@ -37,17 +56,17 @@ public class EstadisticasServiceImpl implements EstadisticasService {
     }
 
     @Override
-    @Transactional
+//    @org.springframework.transaction.annotation.Transactional(isolation = Isolation.SERIALIZABLE)
     public void actualizarEstadisticas(SecuenciaADN secuenciaADN) {
-        Estadistica cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS);
-        cantHumanos.contar();
-        estadisticaRepository.save(cantHumanos);
-
-        if (secuenciaADN.esMutante()) {
-            Estadistica cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS);
-            cantMutantes.contar();
-            estadisticaRepository.save(cantMutantes);
-        }
+//        Estadistica cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS);
+//        cantHumanos.contar();
+//        estadisticaRepository.save(cantHumanos);
+//
+//        if (secuenciaADN.esMutante()) {
+//            Estadistica cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS);
+//            cantMutantes.contar();
+//            estadisticaRepository.save(cantMutantes);
+//        }
     }
 
     private Estadistica obtenerEstadistica(TipoEstadistica tipoEstadistica) {

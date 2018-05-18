@@ -28,6 +28,7 @@ public class MutantServiceImpl implements MutantService {
     EstadisticasService estadisticasService;
 
     @Override
+    @Transactional
     public Boolean isMutant(String[] adn) {
 
         SecuenciaADN secuenciaADN = new SecuenciaADN(adn);

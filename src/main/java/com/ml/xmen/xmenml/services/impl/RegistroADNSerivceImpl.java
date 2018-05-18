@@ -26,7 +26,7 @@ public class RegistroADNSerivceImpl implements RegistroADNService {
 
     private Logger logger = LogManager.getLogger(RegistroADNSerivceImpl.class);
 
-//    @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
+    @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
     public void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
 
         if (!this.parametrosADN.getPersistirRegistros())
