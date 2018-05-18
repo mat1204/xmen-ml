@@ -1,6 +1,7 @@
 package com.ml.xmen.xmenml.controllers;
 
 import com.ml.xmen.xmenml.repository.EstadisticaRepository;
+import com.ml.xmen.xmenml.repository.RegistroADNRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,9 +37,13 @@ public class StatsControllerTest {
     @Autowired
     EstadisticaRepository estadisticaRepository;
 
+    @Autowired
+    RegistroADNRepository registroADNRepository;
+
     @Before
     public void inicializarTest() {
         estadisticaRepository.deleteAll();
+        registroADNRepository.deleteAll();
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 

@@ -12,10 +12,10 @@ public interface EstadisticasService {
      */
     EstadisticasGlobalDTO obtenerEstadisticasGlobales();
 
-    /**
-     * Actualiza las estadisticas a partir de una secuencia de candenas de ADN previamente analizada
-     * @param secuenciaADN cadena previamente analiza la poseesion de gen mutante
-     */
-    void actualizarEstadisticas(SecuenciaADN secuenciaADN);
+//    /**
+//     * Actualiza las estadisticas a partir de una secuencia de candenas de ADN previamente analizada
+//     * @param secuenciaADN cadena previamente analiza la poseesion de gen mutante
+//     */
+//    void actualizarEstadisticas(SecuenciaADN secuenciaADN);
 
 }

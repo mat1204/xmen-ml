@@ -24,8 +24,8 @@ public class MutantServiceImpl implements MutantService {
     @Autowired
     RegistroADNService registroADNService;
 
-    @Autowired
-    EstadisticasService estadisticasService;
+//    @Autowired
+//    EstadisticasService estadisticasService;
 
     @Override
     @Transactional
@@ -37,7 +37,7 @@ public class MutantServiceImpl implements MutantService {
 
         this.registroADNService.persistirSecuenciaAdn(secuenciaADN);
 
-        this.estadisticasService.actualizarEstadisticas(secuenciaADN);
+//        this.estadisticasService.actualizarEstadisticas(secuenciaADN);
 
         return esMutante;
     }

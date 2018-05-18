@@ -18,26 +18,10 @@ import java.math.RoundingMode;
 @Service
 public class EstadisticasServiceImpl implements EstadisticasService {
 
-    @Autowired
-    private EstadisticaRepository estadisticaRepository;
 
     @Autowired
     private RegistroADNRepository registroADNRepository;
 
-//    @Override
-//    public EstadisticasGlobalDTO obtenerEstadisticasGlobales() {
-//
-//        Long cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS).getValor();
-//        Long cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS).getValor();
-//
-//        BigDecimal ratio = BigDecimal.ZERO;
-//
-//        if (cantHumanos > 0)
-//            ratio = BigDecimal.valueOf(cantMutantes)
-//                    .divide(BigDecimal.valueOf(cantHumanos), 3, RoundingMode.HALF_UP);
-//
-//        return new EstadisticasGlobalDTO(cantHumanos, cantMutantes, ratio);
-//    }
 
     @Override
     @Transactional
@@ -55,26 +39,4 @@ public class EstadisticasServiceImpl implements EstadisticasService {
         return new EstadisticasGlobalDTO(cantHumanos, cantMutantes, ratio);
     }
 
-    @Override
-//    @org.springframework.transaction.annotation.Transactional(isolation = Isolation.SERIALIZABLE)
-    public void actualizarEstadisticas(SecuenciaADN secuenciaADN) {
-//        Estadistica cantHumanos = obtenerEstadistica(TipoEstadistica.CANTIDAD_HUMANOS_PROCESADOS);
-//        cantHumanos.contar();
-//        estadisticaRepository.save(cantHumanos);
-//
-//        if (secuenciaADN.esMutante()) {
-//            Estadistica cantMutantes = obtenerEstadistica(TipoEstadistica.CANTIDAD_MUTANTES_ENCONTRADOS);
-//            cantMutantes.contar();
-//            estadisticaRepository.save(cantMutantes);
-//        }
-    }
-
-    private Estadistica obtenerEstadistica(TipoEstadistica tipoEstadistica) {
-        Estadistica estadistica = estadisticaRepository.findByTipoEstadistica(tipoEstadistica);
-
-        if ( estadistica == null)
-            estadistica = new Estadistica(tipoEstadistica);
-
-        return estadistica;
-    }
 }
