@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
+//@Service
 public class RegistroADNSerivceImpl implements RegistroADNService {
 
     @Autowired
@@ -29,8 +29,10 @@ public class RegistroADNSerivceImpl implements RegistroADNService {
     @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
     public void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
 
-        if (!this.parametrosADN.getPersistirRegistros())
+        if (!this.parametrosADN.getPersistirRegistros()) {
+            logger.info("Registro no Persistido LUCAS!!!!!");
             return;
+        }
 
         try {
             RegistroADN registroADN = new RegistroADN();
