@@ -47,8 +47,9 @@ public class StatsControllerTest {
     @Test
     public void obtenerEstadisticasLimpiasTest() throws Exception {
 
-        registroADNRepository.deleteAll();
+        Thread.sleep(500l);
 
+        registroADNRepository.deleteAll();
         this.mockMvc
                 .perform(get("/stats"))
                 .andExpect(result -> {
