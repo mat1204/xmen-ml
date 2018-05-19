@@ -1,6 +1,5 @@
 package com.ml.xmen.xmenml.controllers;
 
-import com.ml.xmen.xmenml.repository.EstadisticaRepository;
 import com.ml.xmen.xmenml.repository.RegistroADNRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,22 +33,22 @@ public class StatsControllerTest {
 
     private MockMvc mockMvc;
 
-    @Autowired
-    EstadisticaRepository estadisticaRepository;
 
     @Autowired
     RegistroADNRepository registroADNRepository;
 
     @Before
     public void inicializarTest() {
-        estadisticaRepository.deleteAll();
-        registroADNRepository.deleteAll();
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        registroADNRepository.deleteAll();
     }
 
 
     @Test
     public void obtenerEstadisticasLimpiasTest() throws Exception {
+
+        registroADNRepository.deleteAll();
+
         this.mockMvc
                 .perform(get("/stats"))
                 .andExpect(result -> {

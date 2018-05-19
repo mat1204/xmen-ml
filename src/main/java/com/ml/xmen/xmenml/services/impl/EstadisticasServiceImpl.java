@@ -2,9 +2,6 @@ package com.ml.xmen.xmenml.services.impl;
 
 import com.ml.xmen.xmenml.domain.SecuenciaADN;
 import com.ml.xmen.xmenml.dto.EstadisticasGlobalDTO;
-import com.ml.xmen.xmenml.entity.Estadistica;
-import com.ml.xmen.xmenml.entity.TipoEstadistica;
-import com.ml.xmen.xmenml.repository.EstadisticaRepository;
 import com.ml.xmen.xmenml.repository.RegistroADNRepository;
 import com.ml.xmen.xmenml.services.EstadisticasService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,11 +11,13 @@ import com.ml.xmen.xmenml.services.RegistroADNService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-//@Service
+@Service
+@Qualifier("secuencial")
 public class RegistroADNSerivceImpl implements RegistroADNService {
 
     @Autowired
