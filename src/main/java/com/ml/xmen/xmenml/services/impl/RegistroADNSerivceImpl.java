@@ -29,15 +29,14 @@ public class RegistroADNSerivceImpl implements RegistroADNService {
     @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
     public void persistirSecuenciaAdn(SecuenciaADN secuenciaADN) {
 
-        if (!this.parametrosADN.getPersistirRegistros()) {
-            logger.info("Registro no Persistido LUCAS!!!!!");
+        if (!this.parametrosADN.getPersistirRegistros())
             return;
-        }
+
 
         try {
             RegistroADN registroADN = new RegistroADN();
 
-            //logger.info("persistiendo secuencia:" + secuenciaADN.serializarADN());
+            logger.info("persistiendo secuencia secuenia:" + secuenciaADN.hashCode());
 
             registroADN.setSecuenciasADN(secuenciaADN.serializarADN());
             registroADN.setEsMutante(secuenciaADN.esMutante());

@@ -4,6 +4,7 @@ import com.ml.xmen.xmenml.comprobadores.ComprobadorADN;
 import com.ml.xmen.xmenml.domain.SecuenciaADN;
 import com.ml.xmen.xmenml.entity.RegistroADN;
 import com.ml.xmen.xmenml.repository.RegistroADNRepository;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,6 +27,11 @@ public class MutantServiceImplTest {
 
     @Before
     public void inicializarTest() {
+        this.registroADNRepository.deleteAll();
+    }
+
+    @After
+    public void limpiarTest() {
         this.registroADNRepository.deleteAll();
     }
 
@@ -100,7 +106,7 @@ public class MutantServiceImplTest {
 
 
     @Test
-    public void secuenciaMutantePersistidaTest() {
+    public void secuenciaMutantePersistidaTest() throws InterruptedException {
         String[] adn = {
                 "ACCCA",
                 "CACAA",
@@ -110,8 +116,10 @@ public class MutantServiceImplTest {
 
         Boolean esMutante = mutantService.isMutant(adn);
 
-        Assert.assertEquals(1l, registroADNRepository.count());
+        // Duermo el thread esperando que el actor persista el registro
+        Thread.sleep(1500l);
 
+        Assert.assertEquals(1l, registroADNRepository.count());
         RegistroADN registroADN = registroADNRepository.findAll().iterator().next();
 
         Assert.assertNotNull(registroADN.getId());
@@ -120,7 +128,7 @@ public class MutantServiceImplTest {
     }
 
     @Test
-    public void secuenciaNoMutantePersistidaTest() {
+    public void secuenciaNoMutantePersistidaTest() throws InterruptedException {
         String[] adn = {
                 "ACCCA",
                 "CACAC",
@@ -130,6 +138,8 @@ public class MutantServiceImplTest {
 
         Boolean esMutante = mutantService.isMutant(adn);
 
+        // Duermo el thread esperando que el actor persista el registro
+        Thread.sleep(1000l);
         Assert.assertEquals(1l, registroADNRepository.count());
 
         RegistroADN registroADN = registroADNRepository.findAll().iterator().next();
