@@ -17,7 +17,7 @@ public class SecuenciaADN {
     /**
      * Indica si la Secuencia de ADN posee el gen mutante, debe comprobarse previamente, caso contrario
      * arrojara SecuenciaADNNoAnalizadaException.
-     * @return
+     * @return Boolean que indica si la cadena posee el gen mutante.
      */
     public Boolean esMutante() {
 
@@ -33,7 +33,7 @@ public class SecuenciaADN {
 
     /**
      * Serializa la informacion que poseen todas las cadenas de ADN, en un unico String.
-     * @return
+     * @return cadena serializada
      */
     public String serializarADN() {
         return this.matrizADN.serializarCadena();
@@ -42,8 +42,8 @@ public class SecuenciaADN {
 
     /**
      * Indica si la Secuencia de ADN posee un el Gen Mutante a partir de un comprobador de cadenas de ADN.
-     * @param comprobadorADN
-     * @return
+     * @param comprobadorADN analizador de ADN
+     * @return Booleano que indica si posee gen Mutante
      */
     public Boolean contieneAdnMutante(ComprobadorADN comprobadorADN) {
 

@@ -17,8 +17,8 @@ public class MatrizCadenaADN {
 
     /**
      * Devuelve la fila indica de la matriz de Cadenas de ADN
-     * @param numeroFila
-     * @return
+     * @param numeroFila numero de fila
+     * @return fila de cadena de ADN
      */
     public String obtenerCadenaFila(Integer numeroFila) {
         if (numeroFila < this.adn.length)
@@ -29,8 +29,8 @@ public class MatrizCadenaADN {
 
     /**
      * Retorna la columna indicada de la matriz de Cadenas de ADN
-     * @param numeroColumna
-     * @return
+     * @param numeroColumna numero de Columna
+     * @return columna en cadena de adn
      */
     public String obtenerCadenaColumna(Integer numeroColumna) {
 
@@ -52,8 +52,8 @@ public class MatrizCadenaADN {
      * Si la matriz es de tamanio NxN, la primer diagonal se ubica en (0, N-1) a (0, N-1)  {extremo inferio izquierdo}
      * La diagonal principal (N-1) en (0,0) a (N-1, N-1)
      * La ultima diagonal(2N-1) en (0,N-1) a (0, N-1)
-     * @param numeroDiagonal
-     * @return
+     * @param numeroDiagonal numero de diagonal
+     * @return diagonal de cadena de adn
      */
     public String obtenerCadenaDiagonal(Integer numeroDiagonal) {
 
@@ -88,8 +88,8 @@ public class MatrizCadenaADN {
      * Si la matriz es de tamanio NxN, la primer(0) diagonal se ubica en (0, 0) a (0, 0)  {extremo inferio izquierdo}
      * La diagonal principal (N-1) en (N-1,0) a (0, N-1)
      * La ultima diagonal (2N-1) en (N-1,N-1) a (N-1, N-1)
-     * @param numeroDiagonal
-     * @return
+     * @param numeroDiagonal numero de diagonal
+     * @return cadena de ADN en diagonal
      */
     public String obtenerCadenaDiagonalInvertida(Integer numeroDiagonal) {
 
@@ -116,7 +116,7 @@ public class MatrizCadenaADN {
 
     /**
      * Retorna todas las cadenas de ADN, serializadas en un String, en FORMATO JSON
-     * @return
+     * @return Cadena de ADN serializada
      */
     public String serializarCadena() {
         StringBuffer sb = new StringBuffer();
@@ -162,7 +162,7 @@ public class MatrizCadenaADN {
 
     /**
      * Indica el numero de cadenas que posee la matriz, siendo tambien el tamaño de la Matriz.
-     * @return
+     * @return numero de tamaño de Matriz
      */
     public Integer numeroDeCadenas() {
         return this.adn.length;
@@ -170,7 +170,7 @@ public class MatrizCadenaADN {
 
     /**
      * Indica el numero de diagonales que posee la matriz
-     * @return
+     * @return numero de diagonales
      */
     public Integer numeroDeDiagonales() {
         return this.adn.length * 2 - 1;
