@@ -15,6 +15,14 @@ Levantar Aplicacion:
 --------------------
 (Requerimientos: **Entorno Linux, Java 8, Docker 18.03** )
 
+Correr test
+```
+./gradlew test
+```
+
+
+
+
 Script Para levantar BDD PostrgreSQL
 
 ```
