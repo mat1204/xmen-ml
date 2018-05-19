@@ -22,7 +22,7 @@ Script Para levantar BDD PostrgreSQL
 ```
 
 
-Levantar app springBoot (Levanta app con enviroment "default" en puerto **8080**)
+Levantar app springBoot (enviroment "default" en puerto **8080**)
  ```
 ./gradlew bootRun
 ```
